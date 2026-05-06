@@ -7,7 +7,6 @@ const UseMemo = ({ count }) => {
     return num * 2;
   };
 
-  console.log();
   const result = useMemo(() => {
     return expensiveCalculation(count);
   }, [count]);
