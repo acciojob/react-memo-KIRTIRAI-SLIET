@@ -1,17 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 
-const ReactMemoComp = ({ todos }) => {
-  console.log("Rendering Todo List...");
+const List = ({ todos }) => {
+  return (
+    <ul>
+      {todos.map((item, i) => (
+        <li key={i}>{item}</li>
+      ))}
+    </ul>
+  );
+};
+
+const MemoList = React.memo(List);
+
+const ReactMemoComp = () => {
+  const [todos, setTodos] = useState(["HTML", "CSS", "JavaScript", "React"]);
+  const [input, setInput] = useState("");
+
+  const addSkill = () => {
+    if (input.trim().length > 5) {
+      setTodos((prev) => [...prev, input]);
+      setInput("");
+    }
+  };
 
   return (
     <div>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
-        ))}
-      </ul>
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+
+      <button onClick={addSkill}>Add Skill</button>
+
+      <MemoList todos={todos} />
     </div>
   );
 };
 
-export default React.memo(ReactMemoComp);
+export default ReactMemoComp;
