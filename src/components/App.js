@@ -11,12 +11,10 @@ function App() {
     setTodos((prev) => [...prev, "New todo"]);
   };
 
-  const addCustomTodo = () => {
+  const addSkill = () => {
     if (input.trim().length > 5) {
       setTodos((prev) => [...prev, input]);
       setInput("");
-    } else {
-      alert("Task must be more than 5 characters");
     }
   };
 
@@ -33,22 +31,22 @@ function App() {
         onChange={(e) => setInput(e.target.value)}
       />
 
-      <button onClick={addCustomTodo}>Add Skill</button>
-
-      <br />
-      <br />
+      <button onClick={addSkill}>Add Skill</button>
 
       <button onClick={addTodo}>Add Todo</button>
 
-      <hr />
+      <ul>
+        {todos.map((todo, i) => (
+          <li key={i}>{todo}</li>
+        ))}
+      </ul>
 
       <p>
-        Count: {count} <button onClick={() => setCount((c) => c + 1)}>+</button>
+        Count: {count}
+        <button onClick={() => setCount(count + 1)}>+</button>
       </p>
 
       <UseMemo count={count} />
-
-      <hr />
 
       <h1>React.memo</h1>
 
