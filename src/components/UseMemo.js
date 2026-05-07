@@ -9,7 +9,12 @@ const UseMemo = () => {
   };
 
   const expensiveCalculation = (num) => {
-    for (let i = 0; i < 100000000; i++) {}
+    let total = 0;
+
+    for (let i = 0; i < 100000; i++) {
+      total += i;
+    }
+
     return num * 2;
   };
 
@@ -19,9 +24,12 @@ const UseMemo = () => {
 
   return (
     <div>
+      <h1>React.useMemo</h1>
       <h2>My todos</h2>
+      <p>New Todo</p>
 
       <button onClick={addTodo}>Add Todo</button>
+      <hr />
 
       <ul>
         {todos.map((item, i) => (
@@ -36,6 +44,8 @@ const UseMemo = () => {
 
       <h2>Expensive Calculation</h2>
       <p>{result}</p>
+      <hr />
+      <hr />
     </div>
   );
 };

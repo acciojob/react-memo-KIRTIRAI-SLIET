@@ -25,6 +25,7 @@ const ReactMemoComp = () => {
 
   return (
     <div>
+      <h2>React.memo</h2>
       <input
         type="text"
         value={input}
